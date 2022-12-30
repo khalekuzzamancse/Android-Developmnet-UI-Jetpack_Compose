@@ -3,14 +3,15 @@ package com.example.com
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.com.ui.theme.ComTheme
-import kotlinx.coroutines.launch
 
 
 class MainActivity : ComponentActivity() {
@@ -23,39 +24,24 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val l = mutableListOf<DomainMenuItem>(
-                        DomainMenuItem("A", R.drawable.inc),
-                        DomainMenuItem("B", R.drawable.inc),
-                        DomainMenuItem("C", R.drawable.inc),
-                        DomainMenuItem("D", R.drawable.inc),
-                    )
-                    val scaffoldState = rememberScaffoldState()
-                    val coroutineScope = rememberCoroutineScope()
-                    Scaffold(
-                        modifier = Modifier.fillMaxSize(),
-                        scaffoldState = scaffoldState,
-                        topBar = {
-                            Appbar(title = "AA", onNavigationItemClickListener = {
-                                coroutineScope.launch {
-                                    scaffoldState.drawerState.open()
-                                }
-                            })
-                        },
-                        drawerContent = {
-                            MenuContent(list = l)
-                        }
-                    ) {
+                   Greeting()
 
-                    }
                 }
             }
         }
     }
 }
-
 @Composable
-fun Greeting(name: String) {
-
+fun Greeting() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.White),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        CustomSpinner(options = listOf("Aman","Dipankor","Tab","Kaua"))
+    }
 
 }
 
@@ -64,6 +50,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     ComTheme {
-        Greeting("Android")
+        Greeting()
     }
 }
