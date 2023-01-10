@@ -1,12 +1,18 @@
 package com.example.com
 
+import android.util.Log
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 
+fun getText(option: String): String {
+    Log.i("ItemSeleced", option)
+    return option
+}
+
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun CustomSpinner(options: List<String>) {
+fun CustomSpinner(options: List<String>, onSelected: (String) -> String) {
     var expanded by remember { mutableStateOf(false) }
     var selectedOption by remember {
         mutableStateOf(options[0])
@@ -14,20 +20,24 @@ fun CustomSpinner(options: List<String>) {
     ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = {
         expanded = !expanded
     }, modifier = Modifier) {
-        TextField(value = selectedOption,
+        TextField(
+            value = selectedOption,
             onValueChange = {},
             readOnly = true,
             label = { Text(text = "label") },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-            colors = ExposedDropdownMenuDefaults.textFieldColors()
-        )
+            colors = ExposedDropdownMenuDefaults.textFieldColors(),
+
+            )
 
         ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             options.forEach { selected ->
                 DropdownMenuItem(onClick = {
                     selectedOption = selected
                     expanded = false
+                    onSelected(selectedOption)
                 }) {
+
                     Text(text = selected)
                 }
 
@@ -36,6 +46,7 @@ fun CustomSpinner(options: List<String>) {
 
     }
 }
+
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MyUI() {

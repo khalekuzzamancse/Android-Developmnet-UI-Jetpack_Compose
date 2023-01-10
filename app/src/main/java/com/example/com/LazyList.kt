@@ -8,7 +8,12 @@ import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
@@ -60,6 +65,20 @@ fun LazyG(list: List<Int>) {
     ) {
         items(list) { item ->
             ImageV(resId = item)
+        }
+    }
+}
+@Composable
+fun ListWithDeleteOption(list:MutableList<String>){
+    LazyColumn(){
+        items(list){item ->  
+            Row() {
+                Text(text=item)
+                Button(onClick = { list.remove(item) }) {
+                    Text(text = "Delete")
+                }
+                
+            }
         }
     }
 }
