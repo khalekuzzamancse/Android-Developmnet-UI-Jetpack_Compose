@@ -1,4 +1,4 @@
-package com.example.hospital.compose
+package com.example.com.other
 
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem

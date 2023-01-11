@@ -1,4 +1,4 @@
-package com.example.com
+package com.example.com.other
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.com.R
 
 @Composable
 fun TitleQuantity() {

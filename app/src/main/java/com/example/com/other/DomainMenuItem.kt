@@ -1,4 +1,4 @@
-package com.example.com
+package com.example.com.other
 
 import android.provider.ContactsContract.CommonDataKinds.Identity
 import androidx.annotation.DrawableRes

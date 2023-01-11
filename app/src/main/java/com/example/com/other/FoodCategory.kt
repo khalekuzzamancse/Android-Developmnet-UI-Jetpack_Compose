@@ -1,5 +1,6 @@
-package com.example.com
+package com.example.com.other
 
+import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -20,6 +21,27 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+
+
+/*calling data
+var list = mutableListOf<DomainCategory>()
+val id = R.drawable.fish
+list.add(DomainCategory("Fish", id))
+list.add(DomainCategory("Chicken", id))
+list.add(DomainCategory("Fast Food", id))
+list.add(DomainCategory("Sea Fish", id))
+list.add(DomainCategory("Meat", id))
+
+val onClick: (title: String) -> Unit = { title ->
+    Log.i("Clicked", title)
+}
+    LazyCol(
+        list = list,
+        onClick = onClick
+    )
+
+
+ */
 @Composable
 fun LazyCol(list: List<DomainCategory>, onClick: (title: String) -> Unit = {}) {
     LazyColumn(contentPadding = PaddingValues(30.dp),

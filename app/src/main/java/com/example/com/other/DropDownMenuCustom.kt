@@ -1,4 +1,4 @@
-package com.example.com
+package com.example.com.other
 
 import android.util.Log
 import androidx.compose.material.*

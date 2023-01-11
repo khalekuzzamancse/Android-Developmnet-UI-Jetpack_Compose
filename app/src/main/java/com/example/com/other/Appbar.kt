@@ -1,4 +1,4 @@
-package com.example.com
+package com.example.com.other
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.com.R
 
 
 @Composable
@@ -47,8 +48,8 @@ fun MoreActionIcon() {
         Icon(imageVector = Icons.Default.MoreVert, contentDescription = null)
     }
     DropdownMenu(expanded =showOption, onDismissRequest = { showOption=false }) {
-       MoreActionItem(onClick = {  }, title = "Aaaa", iconId =R.drawable.inc )
-        MoreActionItem(onClick = {  }, title = "BBBBB", iconId =R.drawable.inc )
+       MoreActionItem(onClick = {  }, title = "Aaaa", iconId = R.drawable.inc )
+        MoreActionItem(onClick = {  }, title = "BBBBB", iconId = R.drawable.inc )
     }
 
 }

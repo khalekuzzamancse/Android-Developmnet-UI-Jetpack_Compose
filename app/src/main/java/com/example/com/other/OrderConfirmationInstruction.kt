@@ -1,4 +1,4 @@
-package com.example.com
+package com.example.com.other
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.example.com.R
 
 @Composable
 fun ConfirmOrderInstruction(modifier: Modifier = Modifier) {

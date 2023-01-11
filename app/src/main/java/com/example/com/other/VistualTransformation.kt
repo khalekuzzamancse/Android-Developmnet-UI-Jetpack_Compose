@@ -1,4 +1,4 @@
-package com.example.com
+package com.example.com.other
 
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping

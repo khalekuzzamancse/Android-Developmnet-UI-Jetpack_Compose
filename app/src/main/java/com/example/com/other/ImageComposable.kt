@@ -1,4 +1,4 @@
-package com.example.hospital.compose
+package com.example.com.other
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
