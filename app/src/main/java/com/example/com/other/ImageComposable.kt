@@ -12,7 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ImageV(@DrawableRes resId:Int){
+ fun ImageV(@DrawableRes resId:Int){
     Image(painter = painterResource(id =resId),
         contentDescription ="",
         modifier = Modifier

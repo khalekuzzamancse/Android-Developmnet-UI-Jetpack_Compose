@@ -1,9 +1,13 @@
 package com.example.com.graphics
+
 import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -16,12 +20,25 @@ import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+ private data class Coordinate(
+    val x:Float,
+    val y: Float
+)
+private var list= mutableStateListOf<Coordinate>(Coordinate(100f,100f))
 
 @Composable
-fun DrawShape(size: Dp,
-              outlineWidth:Dp,
-              modifier: Modifier=Modifier,
-              ) {
+fun ShapeOnTap(){
+    list.forEach() {
+       DrawShapeAtPoint(size = 50.dp, outlineWidth = 2.dp,
+           x= it.x,y=it.y,
+           modifier = Modifier.fillMaxSize())
+   }
+
+}
+@Composable
+ private fun DrawShapeAtPoint(size: Dp, outlineWidth:Dp,
+                     x:Float,y:Float, modifier: Modifier=Modifier) {
     with(LocalDensity.current) {
         val sizePx = size.toPx()
         val outlineWidthPx= outlineWidth.toPx()
@@ -50,8 +67,8 @@ fun DrawShape(size: Dp,
         }
         fun DrawScope.drawSquare(x:Float,y:Float){
             translate(x,y){
-               drawRect(size=rectangleSize, color = Color.Blue,
-                   style = Fill, topLeft = Offset.Zero)//filled
+                drawRect(size=rectangleSize, color = Color.Blue,
+                    style = Fill, topLeft = Offset.Zero)//filled
                 drawRect(size=rectangleSize, color = Color.Blue,
                     style=outline, topLeft = Offset.Zero)//outlined
             }
@@ -71,17 +88,14 @@ fun DrawShape(size: Dp,
             pointerInput(Unit) {
                 detectTapGestures(
                     onTap = {
-
+                        list.add(Coordinate(it.x,it.y))
+                        Log.i("LLLLLL", list.size.toString())
                     },
                 )
             }
         ){
             val offset=center- Offset(outlineWidthPx/2,outlineWidthPx/2)
-            drawTriangle(offset.x,offset.y)
-            drawTriangle(0f,0f)
-            drawTriangle(100f,100f)
-            drawSquare(250f,200f)
-            drawCircle(200f,500f)
+            drawTriangle(x,y)
         }
     }
 

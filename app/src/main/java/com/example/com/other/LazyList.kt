@@ -1,15 +1,24 @@
 package com.example.com.other
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Button
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 
@@ -61,6 +70,45 @@ fun LazyG(list: List<Int>) {
         items(list) { item ->
             ImageV(resId = item)
         }
+    }
+}
+/*
+calling data
+val list= mutableListOf<Int>()
+    for (i in 1..5){
+        list.add(R.drawable.flower)
+    }
+    val map= mutableMapOf<String,List<Int>>()
+    map.put("Sunday",list)
+    map.put("Monday",list)
+    map.put("Tuesday",list)
+    LazyGridSpan(map)
+ */
+@Composable
+fun LazyGridSpan(map: Map<String,List<Int>>) {
+    LazyVerticalGrid(columns = GridCells.Fixed(2),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(horizontal = 15.dp, vertical = 15.dp),
+    ) {
+        map.forEach(){key,value->
+            item(span ={GridItemSpan(maxLineSpan)}){
+                Card(elevation = 5.dp,
+                    backgroundColor = Color.Green
+                ) {
+                    Text(text = key)
+                }
+            }
+            items(value) { item ->
+                Image(painter = painterResource(id =item),
+                    contentDescription ="",
+                    modifier = Modifier
+                        .size(90.dp),
+                    contentScale = ContentScale.FillBounds
+                )
+            }
+        }
+
     }
 }
 
