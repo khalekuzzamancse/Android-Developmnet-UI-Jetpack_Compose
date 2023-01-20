@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
 
 
 /*calling data
-var list = mutableListOf<DomainCategory>()
+var list = mutableListOf<meDomainCategory>()
 val id = R.drawable.fish
 list.add(DomainCategory("Fish", id))
 list.add(DomainCategory("Chicken", id))

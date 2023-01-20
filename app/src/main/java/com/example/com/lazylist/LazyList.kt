@@ -1,10 +1,7 @@
 package com.example.com.other
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -13,6 +10,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Button
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,6 +19,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun LazyH(list: List<Int>) {
@@ -137,4 +136,45 @@ fun ListWithDeleteOption(list:MutableList<String>){
         }
     }
 }
+@Composable
+fun LazyListWithHeader(map: Map<String, List<String>>) {
+    LazyColumn() {
+        map.forEach() { key, value ->
+            item() {
+                Text(
+                    text = key,
+                    fontSize = 30.sp,
+                )
+            }
 
+            items(value) { it ->
+                Text(text = it)
+            }
+        }
+
+    }
+}
+@Composable
+private fun L(list: List<String>) {
+    LazyColumn(
+        contentPadding = PaddingValues(30.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        itemsIndexed(list) { i, value ->
+            if (i == list.size - 1) {
+                Text(text = value)
+                Divider(
+                    thickness = 2.dp, color = Color.Black,
+                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                )
+                Text(text = "End")
+            } else {
+                Text(text = value)
+
+
+            }
+        }
+
+
+    }
+}

@@ -21,28 +21,28 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
- private data class Coordinate(
-    val x:Float,
-    val y: Float
+
+private data class Coordinate(
+    val x: Float,
+    val y: Float,
 )
-private var list= mutableStateListOf<Coordinate>(Coordinate(100f,100f))
+
 
 @Composable
-fun ShapeOnTap(){
-    list.forEach() {
-       DrawShapeAtPoint(size = 50.dp, outlineWidth = 2.dp,
-           x= it.x,y=it.y,
-           modifier = Modifier.fillMaxSize())
-   }
+fun ShapeOnTap() {
+    DrawShapeAtPoint(
+        size = 50.dp, outlineWidth = 2.dp,
+        modifier = Modifier.fillMaxSize()
+    )
 
 }
+
 @Composable
- private fun DrawShapeAtPoint(size: Dp, outlineWidth:Dp,
-                     x:Float,y:Float, modifier: Modifier=Modifier) {
+private fun DrawShapeAtPoint(size: Dp, outlineWidth: Dp, modifier: Modifier = Modifier) {
     with(LocalDensity.current) {
         val sizePx = size.toPx()
-        val outlineWidthPx= outlineWidth.toPx()
-        val rectangleSize= Size(sizePx,sizePx)
+        val outlineWidthPx = outlineWidth.toPx()
+        val rectangleSize = Size(sizePx, sizePx)
         val trianglePath = remember(sizePx) {
             Path().apply {
                 moveTo(sizePx / 2, 0f)
@@ -53,53 +53,67 @@ fun ShapeOnTap(){
 
 
         }
-        val outline= remember(outlineWidthPx) {
+        val list = remember {
+            mutableStateListOf<Coordinate>()
+        }
+        val outline = remember(outlineWidthPx) {
             Stroke(outlineWidthPx)
         }
-        val shapeCenter= remember(sizePx) {
-            Offset(sizePx/2,sizePx/2)
+        val shapeCenter = remember(sizePx) {
+            Offset(sizePx / 2, sizePx / 2)
         }
-        fun DrawScope.drawTriangle(x:Float,y:Float){
-            translate(x,y){
-                drawPath(path =trianglePath, color = Color.Red)//filled triangle
-                drawPath(path =trianglePath, color = Color.Black, style =outline)//filled triangle
+
+        fun DrawScope.drawTriangle(x: Float, y: Float) {
+            translate(x, y) {
+                drawPath(path = trianglePath, color = Color.Red)//filled triangle
+                drawPath(path = trianglePath, color = Color.Black, style = outline)//filled triangle
             }
         }
-        fun DrawScope.drawSquare(x:Float,y:Float){
-            translate(x,y){
-                drawRect(size=rectangleSize, color = Color.Blue,
-                    style = Fill, topLeft = Offset.Zero)//filled
-                drawRect(size=rectangleSize, color = Color.Blue,
-                    style=outline, topLeft = Offset.Zero)//outlined
+
+        fun DrawScope.drawSquare(x: Float, y: Float) {
+            translate(x, y) {
+                drawRect(
+                    size = rectangleSize, color = Color.Blue,
+                    style = Fill, topLeft = Offset.Zero
+                )//filled
+                drawRect(
+                    size = rectangleSize, color = Color.Blue,
+                    style = outline, topLeft = Offset.Zero
+                )//outlined
             }
         }
-        fun DrawScope.drawCircle(x:Float,y:Float){
-            translate(x,y){
-                drawCircle(radius =sizePx/2, color = Color.Green,
-                    style = Fill, center = shapeCenter)//filled
-                drawCircle(radius =sizePx/2, color = Color.Black,
-                    style = outline, center = shapeCenter)//filled
+
+        fun DrawScope.drawCircle(x: Float, y: Float) {
+            translate(x, y) {
+                drawCircle(
+                    radius = sizePx / 2, color = Color.Green,
+                    style = Fill, center = shapeCenter
+                )//filled
+                drawCircle(
+                    radius = sizePx / 2, color = Color.Black,
+                    style = outline, center = shapeCenter
+                )//filled
 
             }
         }
 
         Canvas(
-            modifier = modifier.
-            pointerInput(Unit) {
+            modifier = modifier.pointerInput(Unit) {
                 detectTapGestures(
                     onTap = {
-                        list.add(Coordinate(it.x,it.y))
+                        list.add(Coordinate(it.x-shapeCenter.x, it.y-shapeCenter.y))
                         Log.i("LLLLLL", list.size.toString())
                     },
                 )
             }
-        ){
-            val offset=center- Offset(outlineWidthPx/2,outlineWidthPx/2)
-            drawTriangle(x,y)
+        ) {
+            val offset = center - Offset(outlineWidthPx / 2, outlineWidthPx / 2)
+            list.forEach {
+                drawTriangle(it.x, it.y)
+            }
+
         }
     }
-
-
 
 
 }
