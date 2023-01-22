@@ -14,7 +14,9 @@ import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.com.DomainItem
+import androidx.compose.ui.graphics.vector.ImageVector
+
+ data class DomainItem(val itemName:String, val icon: ImageVector)
 @Composable
 fun DropDownOnlyTextDemo(){
     val list = listOf<String>("Login", "About Us", "Contact Us")
@@ -114,4 +116,52 @@ fun DropDownOnlyText(list: List<String>) {
     }
 
 
+}
+
+@Composable
+fun CustomSpinnerDemo() {
+    val list = listOf("A", "C", "AGGH")
+    CustomSpinner(options = list) {
+        Log.i("Selected", it)
+    }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun CustomSpinner(options: List<String>, onSelected: (String) -> Unit) {
+    var expanded by remember { mutableStateOf(false) }
+    var selectedOption by remember {
+        mutableStateOf(options[0])
+
+    }
+
+    ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = {
+        expanded = !expanded
+    }, modifier = Modifier.wrapContentSize()) {
+        TextField(
+            value = selectedOption,
+            onValueChange = {},
+            readOnly = true,
+            label = { Text(text = "DropDown") },
+            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+            colors = ExposedDropdownMenuDefaults.textFieldColors(),
+
+            )
+        ExposedDropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+        ) {
+            options.forEach { selected ->
+                DropdownMenuItem(onClick = {
+                    onSelected(selected)
+                    selectedOption = selected
+                    expanded = false
+                }) {
+                    Text(text = selected)
+                }
+            }
+
+        }
+
+    }
 }

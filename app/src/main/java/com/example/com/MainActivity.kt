@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -17,10 +19,14 @@ import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.com.menus.CustomSpinnerDemo
 import com.example.com.menus.DropDownOnlyTextDemo
 import com.example.com.menus.DropDownWithIcon
 import com.example.com.menus.DropDownWithIconDemo
@@ -44,7 +50,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-data class DomainItem(val itemName:String, val icon:ImageVector)
+
 
 @Composable
 fun Greeting() {
@@ -53,16 +59,29 @@ fun Greeting() {
 //    DrawShapeAtPoint(size = 50.dp, outlineWidth = 2.dp,
 //        x= 100f,y=100f,
 //        modifier = Modifier.fillMaxSize())
-    //ShapeOnTap()
-   DropDownOnlyTextDemo()
-  // DropDownWithIconDemo()
+   CustomSpinnerDemo()
 }
 
 
 
 
-
-
+@Composable
+fun MyUI() {
+    Box(modifier = Modifier
+        .wrapContentSize()
+        .size(size = 300.dp)
+        .border(width = 2.dp, color = Color.Magenta, shape = RectangleShape)
+        .drawBehind {
+            // draw here
+            drawLine(
+                color = Color.Blue,
+                strokeWidth = 2.dp.toPx(),
+                start = Offset(x = size.width / 2, y = 0f),
+                end = Offset(x = size.width / 2, y = size.height)
+            )
+        }
+    )
+}
 
 
 @Preview(showBackground = true)
