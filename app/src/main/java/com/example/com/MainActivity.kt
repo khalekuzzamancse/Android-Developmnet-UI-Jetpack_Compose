@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.com.graphics.Test
-import com.example.com.menus.CustomSpinnerDemoOnlyText
+import com.example.com.graphics.MessageBox
+import com.example.com.graphics.RoundedRecByPath
 import com.example.com.ui.theme.ComTheme
 
 
@@ -46,7 +46,7 @@ fun Greeting() {
 //    DrawShapeAtPoint(size = 50.dp, outlineWidth = 2.dp,
 //        x= 100f,y=100f,
 //        modifier = Modifier.fillMaxSize())
-   Test()
+   MessageBox()
 }
 
 
