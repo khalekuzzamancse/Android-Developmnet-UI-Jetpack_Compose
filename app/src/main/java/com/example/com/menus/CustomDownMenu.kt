@@ -16,23 +16,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 
- data class DomainItem(val itemName:String, val icon: ImageVector)
+data class DomainItem(val itemName: String, val icon: ImageVector)
+
 @Composable
-fun DropDownOnlyTextDemo(){
+fun DropDownOnlyTextDemo() {
     val list = listOf<String>("Login", "About Us", "Contact Us")
     DropDownOnlyText(list = list)
 }
+
 @Composable
-fun DropDownWithIconDemo(){
+fun DropDownWithIconDemo() {
     val list = listOf<DomainItem>(
-        DomainItem("Email",Icons.Default.Email),
-        DomainItem("Phone",Icons.Default.Phone),
-        DomainItem("Love",Icons.Default.Favorite)
+        DomainItem("Email", Icons.Default.Email),
+        DomainItem("Phone", Icons.Default.Phone),
+        DomainItem("Love", Icons.Default.Favorite)
     )
     DropDownWithIcon(list = list)
 }
+
 @Composable
- fun DropDownWithIcon(list: List<DomainItem>) {
+fun DropDownWithIcon(list: List<DomainItem>) {
     var expanded by remember { mutableStateOf(false) }
     Box(
         modifier = Modifier
@@ -63,6 +66,7 @@ fun DropDownWithIconDemo(){
 
 
 }
+
 @Composable
 private fun ColumnScope.EachMenuItem(value: DomainItem) {
     DropdownMenuItem(
@@ -77,6 +81,7 @@ private fun ColumnScope.EachMenuItem(value: DomainItem) {
         Text(text = value.itemName)
     }
 }
+
 @Composable
 fun DropDownOnlyText(list: List<String>) {
     var expanded by remember { mutableStateOf(false) }
@@ -116,52 +121,4 @@ fun DropDownOnlyText(list: List<String>) {
     }
 
 
-}
-
-@Composable
-fun CustomSpinnerDemo() {
-    val list = listOf("A", "C", "AGGH")
-    CustomSpinner(options = list) {
-        Log.i("Selected", it)
-    }
-}
-
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun CustomSpinner(options: List<String>, onSelected: (String) -> Unit) {
-    var expanded by remember { mutableStateOf(false) }
-    var selectedOption by remember {
-        mutableStateOf(options[0])
-
-    }
-
-    ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = {
-        expanded = !expanded
-    }, modifier = Modifier.wrapContentSize()) {
-        TextField(
-            value = selectedOption,
-            onValueChange = {},
-            readOnly = true,
-            label = { Text(text = "DropDown") },
-            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-            colors = ExposedDropdownMenuDefaults.textFieldColors(),
-
-            )
-        ExposedDropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false },
-        ) {
-            options.forEach { selected ->
-                DropdownMenuItem(onClick = {
-                    onSelected(selected)
-                    selectedOption = selected
-                    expanded = false
-                }) {
-                    Text(text = selected)
-                }
-            }
-
-        }
-
-    }
 }

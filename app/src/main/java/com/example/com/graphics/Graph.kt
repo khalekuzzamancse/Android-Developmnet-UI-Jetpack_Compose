@@ -2,6 +2,7 @@ package com.example.com.graphics
 import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -64,6 +65,7 @@ fun DrawShape(size: Dp,
                     style = outline, center = shapeCenter)//filled
 
             }
+
         }
 
         Canvas(
