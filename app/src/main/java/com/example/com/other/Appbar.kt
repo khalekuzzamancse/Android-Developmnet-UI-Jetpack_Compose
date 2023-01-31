@@ -16,7 +16,7 @@ import com.example.com.R
 
 
 @Composable
-fun Appbar(title: String, onNavigationItemClickListener: () -> Unit) {
+private fun Appbar(title: String, onNavigationItemClickListener: () -> Unit) {
     TopAppBar(title = { AppbarTitle(title = title) },
         backgroundColor = MaterialTheme.colors.primary,
         contentColor = MaterialTheme.colors.onPrimary,

@@ -5,9 +5,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
@@ -15,8 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.com.graphics.MessageBox
-import com.example.com.graphics.RoundedRecByPath
+import com.example.com.graphics.drawwithcontent.SearchLight
 import com.example.com.ui.theme.ComTheme
 
 
@@ -41,15 +45,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting() {
-//    DrawShape(size = 50.dp, outlineWidth = 2.dp,
-//    modifier = Modifier.fillMaxSize())
-//    DrawShapeAtPoint(size = 50.dp, outlineWidth = 2.dp,
-//        x= 100f,y=100f,
-//        modifier = Modifier.fillMaxSize())
-   MessageBox()
+SearchLight()
+
 }
-
-
 
 
 @Composable
@@ -69,6 +67,7 @@ fun MyUI() {
         }
     )
 }
+
 
 
 @Preview(showBackground = true)
