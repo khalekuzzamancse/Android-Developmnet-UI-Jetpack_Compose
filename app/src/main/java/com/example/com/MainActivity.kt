@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -20,7 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.com.graphics.drawwithcontent.SearchLight
+import com.example.com.graphics.graphicsmodifier.GraphicsLayerModifierDemo
 import com.example.com.ui.theme.ComTheme
 
 
@@ -45,7 +44,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting() {
-SearchLight()
+   // GraphicsModifierTranslate()
+   // GraphicsModifierClipShape()
+    GraphicsLayerModifierDemo()
 
 }
 
@@ -67,7 +68,6 @@ fun MyUI() {
         }
     )
 }
-
 
 
 @Preview(showBackground = true)
