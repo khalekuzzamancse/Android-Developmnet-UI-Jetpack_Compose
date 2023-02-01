@@ -23,7 +23,8 @@ import com.example.com.graphics.ShapeOnTap
 import com.example.com.graphics.brush.Brush01
 import com.example.com.graphics.brush.BrushColorStop
 import com.example.com.graphics.graphicsmodifier.GraphicsLayerModifierDemo
-import com.example.com.graphics.logos.TriangleByCoordinate
+import com.example.com.graphics.logos.BkashLogoBadVersion
+import com.example.com.graphics.logos.CupBottom
 import com.example.com.ui.theme.ComTheme
 
 
@@ -54,7 +55,8 @@ fun Greeting() {
   //  Brush01()
     //BrushColorStop()
     //ShapeOnTap()
-    TriangleByCoordinate()
+  //  BkashLogoBadVersion()
+    CupBottom()
 
 }
 
