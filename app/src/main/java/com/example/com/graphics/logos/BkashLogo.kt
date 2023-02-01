@@ -81,16 +81,7 @@ fun Cup(){
             .background(Color.Red)
             .padding(10.dp)
     ){
-//        drawPath(
-//            path = getTopPath(),
-//            color = Color(209, 32, 83, 255),
-//
-//            )
-//        drawPath(
-//            path = getBottomPath(),
-//            color = Color(209, 32, 83, 255),
-//
-//            )
+
         val path= getTopPath().apply {
             addPath(getMiddlePath())
             addPath(getBottomPath())
@@ -104,6 +95,11 @@ fun Cup(){
         drawPath(
             path = getStarPath(),
             color = Color.Red
+        )
+        drawPath(
+            path = getLeftHandPath(),
+            color = Color.White,
+            style =Stroke(8f)
         )
 
 
@@ -181,6 +177,22 @@ private fun getStarPath():Path{
         lineTo(280f, 175f)
         close()
       // lineTo(100f, 300f)
+    }
+    return path
+}
+private fun getLeftHandPath():Path{
+    val path = Path().apply {
+        moveTo(76f, 395f)
+        arcTo(
+            rect = Rect(offset = Offset(0f, 335f), size = Size(135f, 60f)),
+            startAngleDegrees =90f, sweepAngleDegrees = 90f, forceMoveTo = false
+        )
+        lineTo(0f,135f)
+        arcTo(
+            rect = Rect(offset = Offset(0f, 115f), size = Size(35f, 20f)),
+            startAngleDegrees =180f, sweepAngleDegrees = 90f, forceMoveTo = false
+        )
+        lineTo(75f,115f)
     }
     return path
 }
