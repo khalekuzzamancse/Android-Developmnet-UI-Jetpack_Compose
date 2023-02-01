@@ -1,6 +1,7 @@
 package com.example.com.graphics.logos
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -19,6 +20,7 @@ fun BkashLogoBadVersion() {
     Canvas(
         modifier = Modifier
             .padding(10.dp)
+            .background(Color.Red)
     ) {
         drawPath(
             path = getTrianglePath(0f, 0f, 317f, 37f, 241f, 311f),
@@ -72,39 +74,113 @@ private fun getTrianglePath(
     }
     return path;
 }
-
 @Composable
-fun CupBottom() {
+fun Cup(){
     Canvas(
         modifier = Modifier
+            .background(Color.Red)
             .padding(10.dp)
-    ) {
-        val path = Path().apply {
-            moveTo(180f, 575f)
-            lineTo(430f, 575f)
-            arcTo(
-                rect = Rect(offset = Offset(430f, 575f), size = Size(25f, 25f)),
-                startAngleDegrees = 270f, sweepAngleDegrees = 90f, forceMoveTo = false
-            )
-            lineTo(455f, 700f)
-            lineTo(155f, 700f)
-            lineTo(155f, 600f)
-            arcTo(
-                rect = Rect(offset = Offset(155f, 575f), size = Size(25f, 25f)),
-                startAngleDegrees = 180f, sweepAngleDegrees = 90f, forceMoveTo = false
-            )
-            close()
+    ){
+//        drawPath(
+//            path = getTopPath(),
+//            color = Color(209, 32, 83, 255),
+//
+//            )
+//        drawPath(
+//            path = getBottomPath(),
+//            color = Color(209, 32, 83, 255),
+//
+//            )
+        val path= getTopPath().apply {
+            addPath(getMiddlePath())
+            addPath(getBottomPath())
+
+
         }
-
-
-
         drawPath(
             path = path,
-            color = Color(209, 32, 83, 255),
-
+            color = Color.White
             )
+        drawPath(
+            path = getStarPath(),
+            color = Color.Red
+        )
 
 
     }
+}
 
+
+
+
+private fun getBottomPath(): Path {
+    val path = Path().apply {
+        moveTo(100f, 0f)
+        lineTo(500f, 0f)
+        arcTo(
+            rect = Rect(offset = Offset(500f, 0f), size = Size(25f, 45f)),
+            startAngleDegrees = 270f, sweepAngleDegrees = 90f, forceMoveTo = false
+        )
+        lineTo(525f, 270f)
+        arcTo(
+            rect = Rect(offset = Offset(75f, 270f), size = Size(450f, 230f)),
+            startAngleDegrees = 0f, sweepAngleDegrees = 180f, forceMoveTo = false
+        )
+        lineTo(75f, 45f)
+        arcTo(
+            rect = Rect(offset = Offset(75f, 0f), size = Size(25f, 45f)),
+            startAngleDegrees = 180f, sweepAngleDegrees = 90f, forceMoveTo = false
+        )
+        close()
+
+
+    }
+    return path
+
+}
+private fun getTopPath():Path{
+    val path = Path().apply {
+        moveTo(180f, 575f)
+        lineTo(430f, 575f)
+        arcTo(
+            rect = Rect(offset = Offset(430f, 575f), size = Size(25f, 25f)),
+            startAngleDegrees = 270f, sweepAngleDegrees = 90f, forceMoveTo = false
+        )
+        lineTo(455f, 700f)
+        lineTo(155f, 700f)
+        lineTo(155f, 600f)
+        arcTo(
+            rect = Rect(offset = Offset(155f, 575f), size = Size(25f, 25f)),
+            startAngleDegrees = 180f, sweepAngleDegrees = 90f, forceMoveTo = false
+        )
+        close()
+    }
+    return  path
+}
+private fun getMiddlePath():Path{
+    val path = Path().apply {
+        moveTo(320f, 500f)
+        lineTo(320f, 575f)
+        lineTo(290f, 575f)
+        lineTo(290f, 500f)
+        close()
+    }
+    return  path
+}
+private fun getStarPath():Path{
+    val path = Path().apply {
+        moveTo(320f, 115f)
+        lineTo(355f, 180f)
+        lineTo(415f, 180f)
+        lineTo(365f, 240f)
+        lineTo(370f, 330f)
+        lineTo(320f, 280f)
+        lineTo(265f, 330f)
+        lineTo(275f, 240f)
+        lineTo(220f, 180f)
+        lineTo(280f, 175f)
+        close()
+      // lineTo(100f, 300f)
+    }
+    return path
 }
