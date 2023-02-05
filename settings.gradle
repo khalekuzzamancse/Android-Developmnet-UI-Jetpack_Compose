@@ -13,5 +13,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Com"
-include ':app'
 include ':bottomnavigation'
+include ':topnavigation'
+include ':graphics'
+include ':navigationdrawer'
