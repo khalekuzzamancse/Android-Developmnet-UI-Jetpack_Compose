@@ -21,51 +21,21 @@ fun BkashLogoResizeable() {
 
     ) {
         drawPath(
-            path = getTrianglePath(
-                size.width,
-                0f,
-                0f,
-                .45285f,
-                .055722f,
-                .34428f,
-                .46373f
-            ),
+            path = getTrianglePath(size.width, 0f, 0f, .45285f, .055722f, .34428f, .46373f),
+            color = Color(226, 19, 110, 255)
+        )
+        drawPath(
+            path = getTrianglePath(size.width, 0.35f, 0.489457f, .428571f, .820783f, .221428f, 1f),
             color = Color(226, 19, 110, 255)
         )
         drawPath(
             path = getTrianglePath(
-                size.width,
-                0.35f,
-                0.489457f,
-                .428571f,
-                .820783f,
-                .221428f,
-                1f
+                size.width, 0.47571f, 0.06475f, .3642857f, .4789156f, .8071428f, .549698f
             ),
             color = Color(226, 19, 110, 255)
         )
         drawPath(
-            path = getTrianglePath(
-                size.width,
-                0.47571f,
-                0.06475f,
-                .3642857f,
-                .4789156f,
-                .8071428f,
-                .549698f
-            ),
-            color = Color(226, 19, 110, 255)
-        )
-        drawPath(
-            path = getTrianglePath(
-                size.width,
-                0.36428f,
-                0.47891f,
-                .807142f,
-                .549698f,
-                .421428f,
-                .753012f
-            ),
+            path = getTrianglePath(size.width, 0.36428f, 0.47891f, .807142f, .549698f, .421428f, .753012f),
             color = Color(209, 32, 83, 255)
         )
         drawPath(
@@ -127,13 +97,13 @@ private fun getTrianglePath(
     x2: Float, y2: Float,
     x3: Float, y3: Float,
 ): Path {
-    val height=0.94857f*width
+    val height = 0.94857f * width
     val path = Path()
     path.apply {
         moveTo(x1 * width, y1 * height)
         lineTo(x3 * width, y3 * height)
         lineTo(x2 * width, y2 * height)
-      close()
+        close()
     }
     return path;
 }

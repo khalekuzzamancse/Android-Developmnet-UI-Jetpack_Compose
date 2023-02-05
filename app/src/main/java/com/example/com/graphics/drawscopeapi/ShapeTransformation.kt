@@ -1,6 +1,7 @@
 package com.example.com.graphics.drawscopeapi
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
@@ -20,9 +21,11 @@ fun RotateRectangle() {
         modifier = Modifier
             .padding(10.dp)
             .wrapContentSize()
-            .size(400.dp)
+            .size(200.dp)
+            .background(Color.Magenta)
     ) {
-        rotate(degrees = 45F) {
+        rotate(degrees = 45F)
+        {
             drawRect(
                 color = Color.Gray,
                 topLeft = Offset(x = size.width / 3F, y = size.height / 3F),
@@ -31,6 +34,7 @@ fun RotateRectangle() {
         }
     }
 }
+
 @Composable
 fun ScaleRectangle() {
     Canvas(
@@ -39,18 +43,18 @@ fun ScaleRectangle() {
             .wrapContentSize()
             .size(400.dp)
     ) {
-      scale(
-          scaleX = 2f,
-          scaleY = 3f,
-      ){
-          drawRect(
-              color = Color.Gray,
-              topLeft = Offset(x = size.width / 3F, y = size.height / 3F),
-              size = size / 3F
-          )
-      }
+        scale(
+            scaleX = 2f,
+            scaleY = 3f,
+        ) {
+            drawRect(color = Color.Gray,
+                topLeft = Offset(x = size.width / 3F, y = size.height / 3F),
+                size = size / 3F
+            )
+        }
     }
 }
+
 @Composable
 fun RectangleMove() {
     Canvas(
@@ -59,15 +63,16 @@ fun RectangleMove() {
             .wrapContentSize()
             .size(400.dp)
     ) {
-       translate(left = 200f, top = 300f){
-           drawRect(
-               color = Color.Gray,
-               topLeft = Offset(x = size.width / 3F, y = size.height / 3F),
-               size = size / 3F
-           )
-       }
+        translate(left = 200f, top = 300f) {
+            drawRect(
+                color = Color.Gray,
+                topLeft = Offset(x = size.width / 3F, y = size.height / 3F),
+                size = size / 3F
+            )
+        }
     }
 }
+
 @Composable
 fun RectangleWithTransformation() {
     Canvas(
@@ -76,6 +81,18 @@ fun RectangleWithTransformation() {
             .wrapContentSize()
             .size(400.dp)
     ) {
+        withTransform({
+            translate(10.0f, 12.0f)
+            rotate(45.0f, center)
+            scale(2.0f, 0.5f)
+        }) {
+            drawRect(
+                color = Color.Gray,
+                topLeft = Offset(x = size.width / 3F, y = size.height / 3F),
+                size = size / 3F
+            )
+        }
+
 
     }
 }
