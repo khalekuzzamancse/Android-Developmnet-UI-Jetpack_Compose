@@ -14,7 +14,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/animation" />
             <option value="$PROJECT_DIR$/bottomnavigation" />
+            <option value="$PROJECT_DIR$/control_composable" />
+            <option value="$PROJECT_DIR$/custom_layout" />
             <option value="$PROJECT_DIR$/graphics" />
+            <option value="$PROJECT_DIR$/lazy_layout" />
             <option value="$PROJECT_DIR$/navigationdrawer" />
             <option value="$PROJECT_DIR$/topnavigation" />
           </set>
