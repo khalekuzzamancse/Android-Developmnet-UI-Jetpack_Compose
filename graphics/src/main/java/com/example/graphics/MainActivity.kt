@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
             ComTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("Compose Graphics")
+                    Greeting()
                 }
             }
         }
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
+fun Greeting() {
     Text(text = "Hello Graphics")
 }
 
@@ -35,6 +35,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     ComTheme {
-        Greeting("Android")
+        Greeting()
     }
 }
