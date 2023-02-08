@@ -6,8 +6,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.jetpack.compose.example.bottomnavigation.ui.theme.Teal200
@@ -18,35 +22,14 @@ fun NavBarDemo2() {
     val list = listOf<NavbarItem>(
         NavbarItem("Home", Icons.Default.Home),
         NavbarItem("Setting", Icons.Default.Settings),
-        NavbarItem("Search", Icons.Default.Search),
         NavbarItem("Call", Icons.Default.Call),
+       NavbarItem("Call", Icons.Default.Call),
     )
-    BottomNavbarV_2(itemList = list)
+   // BottomAppbarCoveringKeyboard(itemList = list)
+
+
 }
 
-@Composable
-fun BottomNavbarV_3(itemList: List<NavbarItem>) {
-    var selectedItem by remember {
-        mutableStateOf(0)
-    }
-    BottomAppBar(cutoutShape = RoundedCornerShape(50)) {
-        itemList.forEachIndexed { index, item ->
-            BottomNavigationItem(
-                selected = selectedItem == index,
-                onClick = { selectedItem = index },
-                label = { Text(text = item.name) },
-                icon = {
-                    Icon(imageVector = item.icon, contentDescription = null)
-                },
-                selectedContentColor = Color.Green,
-                unselectedContentColor = Color.White
-            )
-
-
-        }
-
-    }
-}
 
 @Composable
 fun BottomNavbarV_2(itemList: List<NavbarItem>) {
@@ -79,6 +62,38 @@ fun BottomNavbarV_2(itemList: List<NavbarItem>) {
 }
 
 @Composable
+fun BottomAppbarCoveringKeyboard(itemList: List<NavbarItem>) {
+
+    BottomAppBar(cutoutShape = RoundedCornerShape(50)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            itemList.forEachIndexed { index, item ->
+                if (index == 0) {
+                    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.high) {
+                        IconButton(onClick = {}) {
+                            //the first icon
+                            Icon(item.icon, contentDescription = null)
+                        }
+                    }
+                }
+                else {
+                    IconButton(onClick = { /* doSomething() */ }) {
+                        Icon(item.icon, contentDescription = null)
+                    }
+                }
+
+
+
+            }
+
+        }
+
+
+    }
+}
+
+@Composable
 fun FABforBottomBar() {
     FloatingActionButton(
         onClick = {
@@ -86,6 +101,7 @@ fun FABforBottomBar() {
         shape = RoundedCornerShape(50),
         backgroundColor = Teal200
     ) {
+
         Icon(Icons.Filled.Add, tint = Color.White, contentDescription = "Add")
     }
 

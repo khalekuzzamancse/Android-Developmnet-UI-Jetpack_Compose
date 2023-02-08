@@ -1,18 +1,16 @@
-package com.jetpack.compose.example.bottomnavigation
+package com.example.navigation
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.jetpack.compose.example.bottomnavigation.material3.BottomAppbarDemo
-import com.jetpack.compose.example.bottomnavigation.ui.theme.ComTheme
-import java.util.*
-
+import com.example.navigation.ui.theme.ComTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,44 +22,22 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting()
+                    Greeting("Android")
                 }
             }
         }
-
     }
-
-
-
-
-
 }
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Greeting() {
-    Scaffold(
-        bottomBar = {
-            BottomAppbarDemo()
-        },
-    ) {
-//        Column(
-//            modifier = Modifier
-//                .padding(bottom = 70.dp)
-//                .fillMaxHeight()
-//            ,verticalArrangement = Arrangement.Bottom) {
-//            TextField(value = "Search", onValueChange ={} )
-//        }
-
-
-    }
-
+fun Greeting(name: String) {
+    Text(text = "Hello $name!")
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     ComTheme {
-        Greeting()
+        Greeting("Android")
     }
 }

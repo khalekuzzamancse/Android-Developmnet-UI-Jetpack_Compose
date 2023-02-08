@@ -4,10 +4,6 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -19,15 +15,6 @@ data class NavbarItem(
     //add more if you need
 )
 
-@Composable
-private fun NavBarDemo() {
-    val list = listOf<NavbarItem>(
-        NavbarItem("Home", Icons.Default.Home),
-        NavbarItem("Setting", Icons.Default.Settings),
-        NavbarItem("Search", Icons.Default.Search),
-    )
-    BottomNavbarV_1(itemList = list)
-}
 
 
 @Composable
@@ -52,4 +39,3 @@ private fun BottomNavbarV_1(itemList: List<NavbarItem>) {
     }
 
 }
-
