@@ -9,7 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.jetpack.compose.example.bottomnavigation.material3.BottomAppbarDemo
+import com.jetpack.compose.example.bottomnavigation.bottomappbar.material3.BottomAppbarDemo
 import com.jetpack.compose.example.bottomnavigation.ui.theme.ComTheme
 import java.util.*
 
@@ -45,13 +45,7 @@ fun Greeting() {
             BottomAppbarDemo()
         },
     ) {
-//        Column(
-//            modifier = Modifier
-//                .padding(bottom = 70.dp)
-//                .fillMaxHeight()
-//            ,verticalArrangement = Arrangement.Bottom) {
-//            TextField(value = "Search", onValueChange ={} )
-//        }
+
 
 
     }

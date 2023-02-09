@@ -1,4 +1,4 @@
-package com.jetpack.compose.example.bottomnavigation
+package com.jetpack.compose.example.bottomnavigation.bottomappbar
 
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem

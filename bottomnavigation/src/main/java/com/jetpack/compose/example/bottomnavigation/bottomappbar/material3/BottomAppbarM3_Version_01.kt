@@ -1,4 +1,4 @@
-package com.jetpack.compose.example.bottomnavigation.material3
+package com.jetpack.compose.example.bottomnavigation.bottomappbar.material3
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.FloatingActionButton
