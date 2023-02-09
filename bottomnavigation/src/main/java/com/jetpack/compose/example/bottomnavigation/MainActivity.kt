@@ -6,10 +6,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.jetpack.compose.example.bottomnavigation.bottomappbar.material3.BottomAppbarDemo
+import com.jetpack.compose.example.bottomnavigation.bottomnavigation.BottomNavigationAutoHide_ver01Demo
 import com.jetpack.compose.example.bottomnavigation.ui.theme.ComTheme
 import java.util.*
 
@@ -32,23 +32,12 @@ class MainActivity : ComponentActivity() {
     }
 
 
-
-
-
 }
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Greeting() {
-    Scaffold(
-        bottomBar = {
-            BottomAppbarDemo()
-        },
-    ) {
-
-
-
-    }
+    BottomNavigationAutoHide_ver01Demo()
 
 }
 

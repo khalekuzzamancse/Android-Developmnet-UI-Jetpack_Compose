@@ -12,7 +12,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.jetpack.compose.example.bottomnavigation.NavbarItem
+import com.jetpack.compose.example.bottomnavigation.bottomappbar.NavbarItem
 import com.jetpack.compose.example.bottomnavigation.ui.theme.Teal200
 
 @Composable
