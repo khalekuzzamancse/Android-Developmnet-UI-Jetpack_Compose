@@ -1,10 +1,13 @@
 package com.example.custom_layout
 
-import androidx.compose.runtime.Composable
+import androidx.compose.material.Text
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import java.lang.Integer.max
 
 
@@ -33,6 +36,30 @@ fun CustomLayout01_ColumnLayout(
         }
     }
 }
+
+@Composable
+fun CustomLayout02_FormLayoutDemo() {
+    CustomLayout02_FormLayout(labelMaxWidth = 200.dp) {
+        Text(text = "Name")
+        TextField()
+        Text(text = "Father Name")
+        TextField()
+        Text(text = "Mother Name")
+        TextField()
+    }
+}
+
+@Composable
+fun TextField() {
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    androidx.compose.material.TextField(
+        value = text,
+        onValueChange = { newText ->
+            text = newText
+        }
+    )
+}
+
 
 @Composable
 fun CustomLayout02_FormLayout(
