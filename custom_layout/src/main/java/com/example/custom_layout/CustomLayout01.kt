@@ -62,7 +62,7 @@ fun TextField() {
 
 
 @Composable
-fun CustomLayout02_FormLayout(
+private fun CustomLayout02_FormLayout(
     labelMaxWidth: Dp,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,

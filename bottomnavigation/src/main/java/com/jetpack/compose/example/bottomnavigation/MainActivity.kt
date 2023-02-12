@@ -9,7 +9,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.jetpack.compose.example.bottomnavigation.bottomnavigation.BottomNavigationAutoHide_ver01Demo
 import com.jetpack.compose.example.bottomnavigation.ui.theme.ComTheme
 import java.util.*
 
@@ -37,7 +36,8 @@ class MainActivity : ComponentActivity() {
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Greeting() {
-    BottomNavigationAutoHide_ver01Demo()
+   // BottomNavigationAutoHide_ver01Demo()
+    CustomBottomNavigation01Demo()
 
 }
 
