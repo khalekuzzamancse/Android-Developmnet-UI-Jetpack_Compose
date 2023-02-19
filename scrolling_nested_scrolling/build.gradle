@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.topnavigation'
+    namespace 'com.example.scrolling_nested_scrolling'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.topnavigation"
+        applicationId "com.example.scrolling_nested_scrolling"
         minSdk 29
         targetSdk 33
         versionCode 1
