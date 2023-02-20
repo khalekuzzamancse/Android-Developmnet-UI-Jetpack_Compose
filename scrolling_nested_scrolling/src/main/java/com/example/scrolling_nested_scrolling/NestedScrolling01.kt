@@ -1,5 +1,6 @@
 package com.example.scrolling_nested_scrolling
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -29,6 +30,13 @@ fun Demo() {
                 val delta = available.y
                 val newOffset = boxTopLeftY.value + delta
                 boxTopLeftY.value = newOffset.coerceIn(0f, 200f)
+                return Offset.Zero
+            }
+
+            override fun onPostScroll
+                        (consumed: Offset, available: Offset, source: NestedScrollSource): Offset
+            {
+             Log.i("OnPostScroll", available.y.toString())
                 return Offset.Zero
             }
         }

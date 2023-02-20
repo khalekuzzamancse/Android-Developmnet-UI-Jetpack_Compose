@@ -31,24 +31,40 @@ fun TopAppbarM3_01Demo() {
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TopAppbarM3_01() {
-    TopAppBar(
-        title = {
-            Text(text = "Home Page")
-        },
-        navigationIcon = {
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Default.Menu, contentDescription = null)
-            }
-        },
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
-
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+    Scaffold(
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+        ,
+        topBar = {
+        TopAppBar(
+            title = {
+                Text(text = "Home Page")
+            },
+            navigationIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = Icons.Default.Menu, contentDescription = null)
+                }
+            }, scrollBehavior = scrollBehavior
         )
 
-    )
+    }) {
+        LazyColumn{
+            items(100) { index ->
+                Text(
+                    "I'm item $index", modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                )
+            }
+        }
+
+    }
+
+
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -82,6 +98,7 @@ fun CollapsToolbarDemo() {
                 )
             }
         }
+
         TopAppBar(
             modifier = Modifier
                 .height(toolbarHeight)
@@ -94,6 +111,7 @@ fun CollapsToolbarDemo() {
                     Icon(imageVector = Icons.Default.Menu, contentDescription = null)
                 }
             }
+
         )
     }
 }

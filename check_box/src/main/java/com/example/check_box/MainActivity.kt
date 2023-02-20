@@ -1,4 +1,4 @@
-package com.example.topnavigation
+package com.example.check_box
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,7 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.topnavigation.ui.theme.ComTheme
+import com.example.check_box.ui.theme.ComTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +30,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    TopAppbarM3_01Demo()
-    //CollapsToolbarDemo()
+    TriStateCheckBoxDemo01()
 
 }
 
@@ -39,6 +38,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     ComTheme {
-        Greeting("")
+        Greeting("Android")
     }
 }
