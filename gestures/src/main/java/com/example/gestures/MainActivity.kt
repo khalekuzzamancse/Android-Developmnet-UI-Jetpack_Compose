@@ -1,18 +1,17 @@
-package com.example.check_box
+package com.example.gestures
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.check_box.ui.theme.ComTheme
+import com.example.gestures.ui.theme.ComTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,31 +30,11 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@SuppressLint("UnrememberedMutableState")
-data class Person(
-    var name: String,
-)
-
-@SuppressLint("UnrememberedMutableState")
 @Composable
 fun Greeting(name: String) {
-    Counter()
-
-}
-
-
-
-@Composable
-fun Counter() {
-    var cnt by remember{
-        mutableStateOf(0)
+    Column(Modifier.wrapContentSize()) {
+        MultiTouch03()
     }
-    Text(
-        text = "${cnt}",
-        modifier = Modifier.clickable {
-            cnt++
-        }
-    )
 
 }
 

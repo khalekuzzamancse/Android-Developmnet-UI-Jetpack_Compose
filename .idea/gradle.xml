@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/check_box" />
             <option value="$PROJECT_DIR$/control_composable" />
             <option value="$PROJECT_DIR$/custom_layout" />
+            <option value="$PROJECT_DIR$/gestures" />
             <option value="$PROJECT_DIR$/graphics" />
             <option value="$PROJECT_DIR$/image_composable" />
             <option value="$PROJECT_DIR$/lazy_layout" />
